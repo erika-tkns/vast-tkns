@@ -1,4 +1,4 @@
 # キューポイントクラス
 class Cuepoint < ApplicationRecord
-  # TODO
+  validates :name, presence: true, length: { maximum: 255 }
 end
