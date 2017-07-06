@@ -1,4 +1,7 @@
 # キューポイントクラス
 class Cuepoint < ApplicationRecord
-  validates :name, presence: true, length: { maximum: 255 }
+  has_and_belongs_to_many :campaigns
+  has_many :results
+  
+  validates :name, presence: true, length: { minimum: 5, maximum: 20 }, uniqueness: true
 end

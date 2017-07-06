@@ -1,5 +1,7 @@
 # Cue Point コントローラ
 class CuepointsController < ApplicationController
+  before_action :set_cuepoint, only:[:edit, :update, :destroy]
+
   # 一覧
   def index
     @cuepoints = Cuepoint.all
@@ -25,12 +27,10 @@ class CuepointsController < ApplicationController
 
   # 編集
   def edit
-    @cuepoint = Cuepoint.find(params[:id])
   end
 
   # 更新
   def update
-    @cuepoint = Cuepoint.find(params[:id])
     
     if @cuepoint.update(cuepoint_params)
       flash[:success] = 'キューポイントは正常に更新されました。'
@@ -43,7 +43,6 @@ class CuepointsController < ApplicationController
 
   # 削除
   def destroy
-    @cuepoint = Cuepoint.find(params[:id])
     @cuepoint.destroy
     
     flash[:success] = 'キューポイントは正常に削除されました'
@@ -54,5 +53,9 @@ class CuepointsController < ApplicationController
     # キューポイント用パラメータ
     def cuepoint_params
       params.require(:cuepoint).permit(:name)
+    end
+    
+    def set_cuepoint
+      @cuepoint = Cuepoint.find(params[:id])
     end
 end

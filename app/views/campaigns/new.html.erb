@@ -1,2 +1,47 @@
 <h1>キャンペーン登録</h1>
-<% #TODO %>
+<%= form_for(@campaign) do |f| %>
+
+  <div class="form_group" >
+    <%= f.label :name, 'キャンペーン名' %>
+    <%= f.text_field :name %>
+   </div>
+  
+  <div class="form_group" >
+    <%= f.label :start_at, '開始日時' %>
+    <%= f.text_field :start_at %>
+   </div>
+  
+  <div class="form_group" >
+    <%= f.label :end_at, '終了日時' %>
+    <%= f.text_field :end_at %>
+   </div>
+   
+  <div class="form_group" >
+    <%= f.label :limit_start, 'ゴールimp' %>
+    <%= f.text_field :limit_start %>
+   </div>
+   
+  <div class="form_group" >
+    <%= f.label :movie_url, '動画url' %>
+    <%= f.text_field :movie_url %>
+   </div>
+   
+  <p>日時はyyyy/mm/dd hh:mm:ssで入力してください</p>
+  
+  <div class="form_group" >
+    <ul>
+      <% Array(Cuepoint.all).each do |cuepoint| %>
+      <li>
+        <%= f.check_box 'cuepoint_ids', { :name => 'campaign[cuepoint_ids][]' }, cuepoint.id, nil %>
+        <%= cuepoint.name %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+  
+
+  <%= f.submit '登録',class: 'btn btn-primary btn-block' %>
+<% end %>
+
+
+<%= link_to '中止', cuepoints_path %>

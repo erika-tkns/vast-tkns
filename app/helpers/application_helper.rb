@@ -6,6 +6,6 @@ module ApplicationHelper
   end
 
   def vast_url(cuepoint)
-    request.protocol + request.host_with_port + cuepoint_campaigns_path(@cuepoint) + '.xml'
+    cuepoint_campaigns_url(cuepoint, format: :xml)
   end
 end

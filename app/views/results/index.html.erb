@@ -1,2 +1,13 @@
 <h1>Results</h1>
-<% #TODO %>
+<ul>
+  <% @results.each do |result| %>
+     <li>
+      <%= result.campaign.id %>
+      <%= result.campaign.name %>
+      <%= result.cuepoint.id %>
+      <%= result.cuepoint.name %>
+      <%= result.count_start %>
+      <%= result.count_complete %>
+     </li>
+  <% end %>
+</ul>
