@@ -4,7 +4,7 @@
   <%= f.label :name, '名前' %>
   <%= f.text_field :name %>
   
-  <%= link_to 'VAST URL', vast_url(@cuepoint) %>
+  <%= vast_url(@cuepoint) %>
   
   <%= f.submit '保存' %>
 <% end %>

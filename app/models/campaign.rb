@@ -24,11 +24,9 @@ class Campaign < ApplicationRecord
   # @return [Array] 該当キャンペーンの配列
   def self.current_avaliable(cuepoint)
     @now_campaigns = cuepoint.campaigns.where("start_at <= '#{Time.now}' AND end_at >= '#{Time.now}'")
-    @now_campaigns.each do |campaign|
+    return @now_campaigns.reject do |campaign|
       result = Result.where(campaign: campaign, cuepoint: cuepoint).first
-        if !result.blank? && campaign.limit_start < result.count_start 
-          return campaigns
-        end
-      end
+      !result.blank? && result.count_start > campaign.limit_start
+    end
   end
 end

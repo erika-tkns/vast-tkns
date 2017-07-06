@@ -1,13 +1,28 @@
 <h1>Results</h1>
-<ul>
-  <% @results.each do |result| %>
-     <li>
-      <%= result.campaign.id %>
-      <%= result.campaign.name %>
-      <%= result.cuepoint.id %>
-      <%= result.cuepoint.name %>
-      <%= result.count_start %>
-      <%= result.count_complete %>
-     </li>
-  <% end %>
-</ul>
+
+<% if @results.any? %>  
+  <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>キャンペーンid</th> 
+      <th>キャンペーン名</th>
+      <th>キューポイントid</th>
+      <th>キューポイント名</th>
+      <th>再生回数</th>
+      <th>完了回数</th>
+    </tr>
+  </thead>
+  <tbody>
+       <% @results.each do |result| %>
+        <tr>
+          <td><%= result.campaign.id %></td>
+          <td><%= result.campaign.name %></td>
+          <td><%= result.cuepoint.id %></td>
+          <td><%= result.cuepoint.name %></td>
+          <td><%= result.count_start %></td>
+          <td><%= result.count_complete %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

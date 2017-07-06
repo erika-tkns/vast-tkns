@@ -14,8 +14,8 @@
               </MediaFile>
             </MediaFiles>
             <TrackingEvents>
-              <Tracking event="start"><![CDATA[ <%= track_url(campaign, @cuepoint, `start`) %> ]]></Tracking>
-              <Tracking event="complete"><![CDATA[ <%= track_url(campaign, @cuepoint, `complete`) %> ]]></Tracking>
+              <Tracking event="start"><![CDATA[ <%= raw(track_url(campaign, @cuepoint, 'start')) %> ]]></Tracking>
+              <Tracking event="complete"><![CDATA[ <%= raw(track_url(campaign, @cuepoint, 'complete')) %> ]]></Tracking>
             </TrackingEvents>
           </Linear>
         </Creative>

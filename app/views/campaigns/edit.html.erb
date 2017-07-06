@@ -31,7 +31,7 @@
   
   <div class="form_group" >
     <ul>
-      <% Array(Cuepoint.all).each do |cuepoint| %>
+       <% @cuepoints.each do |cuepoint| %>
       <li>
         <%= f.check_box 'cuepoint_ids', { :name => 'campaign[cuepoint_ids][]' }, cuepoint.id, nil %>
         <%= cuepoint.name %>

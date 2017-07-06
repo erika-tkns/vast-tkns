@@ -19,6 +19,7 @@ class CampaignsController < ApplicationController
   # 新規
   def new
     @campaign = Campaign.new
+    @cuepoints = Cuepoint.all
   end
 
   # 作成
@@ -37,13 +38,14 @@ class CampaignsController < ApplicationController
   # 編集
   def edit
     @campaign = Campaign.find(params[:id])
+    @cuepoints = Cuepoint.all
   end
 
   # 更新
   def update
     @campaign = Campaign.find(params[:id])
     @campaign.cuepoint_ids = nil unless campaign_params[:cuepoint_ids].present?
-    
+    @cuepoints = Cuepoint.all
     if @campaign.update(campaign_params)
       flash[:success] = 'キャンペーンは正常に更新されました。'
       redirect_to campaigns_path
