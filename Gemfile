@@ -62,3 +62,7 @@ gem 'rails-i18n'
 gem 'kaminari'
 
 gem 'validates_timeliness', '~> 4.0'
+
+group :production do 
+  gem 'pg'
+end
